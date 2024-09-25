@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+    <!-- Justice Dance Remix | Abbey Road | Daft Punk Discovery -->
+    <a-scene mindar-image="imageTargetSrc: https://devxr.fr/vinyls/assets/mind/targets.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+            <!-- Chargement des vidéos dans les assets -->
+            <video id="danceVideo" src="https://devxr.fr/vinyls/assets/video/DANSE.mp4" loop crossorigin="anonymous"></video>
+            <video id="oneMoreTimeVideo" src="https://devxr.fr/vinyls/assets/video/One_More%20Time.mp4" loop crossorigin="anonymous"></video>
+            <video id="hereComesTheSunVideo" src="https://devxr.fr/vinyls/assets/video/here_come_the_sun.mp4" loop crossorigin="anonymous"></video>
+            <video id="soundOfSilenceVideo" src="https://devxr.fr/vinyls/assets/video/sound_of_silence.mp4" loop crossorigin="anonymous"></video>
+            <video id="getLuckyVideo" src="https://devxr.fr/vinyls/assets/video/get_lucky.mp4" loop crossorigin="anonymous"></video>
+            <video id="poinconneurLilasVideo" src="https://devxr.fr/vinyls/assets/video/le_poinconneur_des_lilas.mp4" loop crossorigin="anonymous"></video>
+            <video id="watchTowerVideo" src="https://devxr.fr/vinyls/assets/video/all_along_the_watchtower.mp4" loop crossorigin="anonymous"></video>
+            <video id="deltaVideo" src="https://devxr.fr/vinyls/assets/video/delta.mp4" loop crossorigin="anonymous"></video>
+            <video id="sharkInTheAirVideo" src="https://devxr.fr/vinyls/assets/video/skank_in_the_air.mp4" loop crossorigin="anonymous"></video>
+            <video id="leTempsEstBonVideo" src="https://devxr.fr/vinyls/assets/video/le_temps_est_bon.mp4" loop crossorigin="anonymous"></video>
+            <video id="00Video" src="https://devxr.fr/vinyls/assets/video/(OO).mp4" loop crossorigin="anonymous"></video>
+            <video id="SundayBloodySundayVideo" src="https://devxr.fr/vinyls/assets/video/sunday_bloody_bunday.mp4" loop crossorigin="anonymous"></video>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- Utilisation des vidéos comme textures sur des plans -->
+        <a-entity mindar-image-target="targetIndex: 0" id="targetDance">
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#danceVideo"></a-plane>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="targetOneMoreTime">
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#oneMoreTimeVideo"></a-plane>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="targetHereComesTheSun">
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#hereComesTheSunVideo"></a-plane>
+        </a-entity>
+    </a-scene>
+
+    <!-- Bouton pour démarrer les vidéos avec le son, initialement caché -->
+    <button id="startButton" style="position: absolute; bottom: 20px; z-index: 10; display: none; opacity: 0; background: red; border-radius: 20px; border: 2px solid #fff; transition: opacity .5s ease-out">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#ffffff" stroke-linecap="round" stroke-linejoin="round" style="margin: 3px 10px 0 10px;">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="#fff" />
+          </svg>
+    </button>
+
+    <script>
+        const displayButton = ( window.innerWidth / 2 ) - 50
+
+        // Variables pour stocker les vidéos et le bouton
+        var currentVideo = null;
+        var startButton = document.getElementById('startButton');
+        startButton.style.left = displayButton + 'px';
+
+        // Fonction pour afficher le bouton et démarrer la vidéo
+        function showButtonAndPlay(videoElement) {
+            startButton.style.display = 'block'; // Afficher le bouton
+
+            currentVideo = videoElement; // Définir la vidéo courante
+            setTimeout(()=>{
+                startButton.style.opacity = '1';
+            }, 0)
+        }
+
+        // Cacher le bouton après avoir démarré la vidéo avec le son
+        startButton.addEventListener('click', function () {
+            if (currentVideo) {
+                currentVideo.play().catch(function () { 
+                    console.log('Impossible de lire la vidéo avec son'); 
+                });
+                setTimeout(()=>{
+                    startButton.style.opacity = '0'; // Cacher le bouton après le clic
+                }, 0)
+                startButton.style.display = 'none'; // Cacher le bouton après le clic
+                startButton.click()
+            }
+        });
+
+        // Détecter quand une image est scannée et afficher le bouton pour la vidéo correspondante
+        var targetDance = document.getElementById('targetDance');
+        var targetOneMoreTime = document.getElementById('targetOneMoreTime');
+        var targetHereComesTheSun = document.getElementById('targetHereComesTheSun');
+        
+        var danceVideo = document.getElementById('danceVideo');
+        var oneMoreTimeVideo = document.getElementById('oneMoreTimeVideo');
+        var hereComesTheSunVideo = document.getElementById('hereComesTheSunVideo');
+
+        targetDance.addEventListener('targetFound', function () {
+            console.log('Image DANSE détectée');
+            showButtonAndPlay(danceVideo); // Afficher le bouton pour la vidéo "DANSE"
+        });
+
+        targetDance.addEventListener('targetLost', function () {
+            console.log('Image DANSE perdue');
+            if (!danceVideo.paused) {
+                danceVideo.pause();  // Arrêter la vidéo si l'image n'est plus détectée
+                danceVideo.currentTime = 0;  // Remettre la vidéo au début
+            }
+            startButton.style.display = 'none'; // Cacher le bouton
+        });
+
+        targetOneMoreTime.addEventListener('targetFound', function () {
+            console.log('Image One More Time détectée');
+            showButtonAndPlay(oneMoreTimeVideo); // Afficher le bouton pour la vidéo "One More Time"
+        });
+
+        targetOneMoreTime.addEventListener('targetLost', function () {
+            console.log('Image One More Time perdue');
+            if (!oneMoreTimeVideo.paused) {
+                oneMoreTimeVideo.pause();  // Arrêter la vidéo si l'image n'est plus détectée
+                oneMoreTimeVideo.currentTime = 0;  // Remettre la vidéo au début
+            }
+            startButton.style.display = 'none'; // Cacher le bouton
+        });
+
+        targetHereComesTheSun.addEventListener('targetFound', function () {
+            console.log('Image Here Comes The Sun détectée');
+            showButtonAndPlay(hereComesTheSunVideo); // Afficher le bouton pour la vidéo "Here Comes The Sun"
+        });
+
+        targetHereComesTheSun.addEventListener('targetLost', function () {
+            console.log('Image Here Comes The Sun perdue');
+            if (!hereComesTheSunVideo.paused) {
+                hereComesTheSunVideo.pause();  // Arrêter la vidéo si l'image n'est plus détectée
+                hereComesTheSunVideo.currentTime = 0;  // Remettre la vidéo au début
+            }
+            startButton.style.display = 'none'; // Cacher le bouton
+        });
+    </script>
+</body>
+</html>
