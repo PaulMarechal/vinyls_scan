@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Scene MindAR -->
-    <a-scene mindar-image="imageTargetSrc: https://devxr.fr/vinyls/assets/mind/targets.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: https://devxr.fr/vinyls/assets/mind/targets.mind; warmupTolerance: 2" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
             <!-- Chargement des vidéos dans les assets -->
             <video id="danceVideo" src="https://devxr.fr/vinyls/assets/video/DANSE.mp4" loop crossorigin="anonymous"></video>
@@ -32,47 +32,47 @@
 
         <!-- Plan pour chaque vidéo sur les cibles -->
         <a-entity mindar-image-target="targetIndex: 0" id="targetDance">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#danceVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#danceVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 1" id="targetOneMoreTime">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#oneMoreTimeVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#oneMoreTimeVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 2" id="targetHereComesTheSun">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#hereComesTheSunVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#hereComesTheSunVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 3" id="targetSoundOfSilence">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#soundOfSilenceVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#soundOfSilenceVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 4" id="targetGetLucky">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#getLuckyVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#getLuckyVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 5" id="targetPoinconneurLilas">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#poinconneurLilasVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#poinconneurLilasVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 6" id="targetWatchTower">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#watchTowerVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#watchTowerVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 7" id="targetDelta">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#deltaVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#deltaVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 8" id="targetSharkInTheAir">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#sharkInTheAirVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#sharkInTheAirVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 9" id="targetLeTempsEstBon">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#leTempsEstBonVideo"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#leTempsEstBonVideo"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 10" id="target00">
-            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="0.5" src="#00Video"></a-plane>
+            <a-plane rotation="0 0 0" position="0 0 0" width="1" height="1" src="#00Video"></a-plane>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 11" id="targetSundayBloodySunday">
