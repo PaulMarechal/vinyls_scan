@@ -81,82 +81,21 @@
     </a-scene>
 
     <!-- Bouton de démarrage pour lire la vidéo avec le son -->
-    <button id="startButton" style="position: absolute; bottom: 20px; z-index: 10; display: none; opacity: 0; background: red; border-radius: 20px; border: 2px solid #fff; transition: opacity .5s ease-out">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#ffffff" stroke-linecap="round" stroke-linejoin="round" style="margin: 3px 10px 0 10px;">
+    <button id="startButton">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="#ffffff" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="#fff" />
         </svg>
     </button>
 
-    <script>
-        const displayButton = (window.innerWidth / 2) - 50;
-
-        var currentVideo = null;
-        var startButton = document.getElementById('startButton');
-        startButton.style.left = displayButton + 'px';
-
-        // Fonction pour afficher le bouton et démarrer la vidéo
-        function showButtonAndPlay(videoElement) {
-            startButton.style.display = 'block';
-            currentVideo = videoElement;
-            setTimeout(() => {
-                startButton.style.opacity = '1';
-            }, 0);
-        }
-
-        // Cacher le bouton après avoir démarré la vidéo avec le son
-        startButton.addEventListener('click', function () {
-            if (currentVideo) {
-                currentVideo.play().catch(function () {
-                    console.log('Impossible de lire la vidéo avec son');
-                });
-                setTimeout(() => {
-                    startButton.style.opacity = '0'; // Cacher le bouton après le clic
-                }, 0);
-                startButton.style.display = 'none'; // Cacher le bouton après le clic
-            }
-        });
-
-        // Fonction générique pour la gestion des événements de cibles
-        function setupTargetEvents(targetElement, videoElement) {
-            targetElement.addEventListener('targetFound', function () {
-                console.log('Image détectée pour ' + videoElement.id);
-                showButtonAndPlay(videoElement);
-            });
-
-            targetElement.addEventListener('targetLost', function () {
-                console.log('Image perdue pour ' + videoElement.id);
-                if (!videoElement.paused) {
-                    videoElement.pause();  // Arrêter la vidéo si l'image n'est plus détectée
-                    videoElement.currentTime = 0;  // Remettre la vidéo au début
-                }
-                startButton.style.display = 'none'; // Cacher le bouton
-            });
-        }
-
-        // Initialisation des vidéos et cibles
-        var videos = {
-            'targetDance': document.getElementById('danceVideo'),
-            'targetOneMoreTime': document.getElementById('oneMoreTimeVideo'),
-            'targetHereComesTheSun': document.getElementById('hereComesTheSunVideo'),
-            'targetSoundOfSilence': document.getElementById('soundOfSilenceVideo'),
-            'targetGetLucky': document.getElementById('getLuckyVideo'),
-            'targetPoinconneurLilas': document.getElementById('poinconneurLilasVideo'),
-            'targetWatchTower': document.getElementById('watchTowerVideo'),
-            'targetDelta': document.getElementById('deltaVideo'),
-            'targetSharkInTheAir': document.getElementById('sharkInTheAirVideo'),
-            'targetLeTempsEstBon': document.getElementById('leTempsEstBonVideo'),
-            'target00': document.getElementById('00Video'),
-            'targetSundayBloodySunday': document.getElementById('SundayBloodySundayVideo')
-        };
-
-        // Associer chaque cible à sa vidéo correspondante
-        Object.keys(videos).forEach(function (targetId) {
-            var targetElement = document.getElementById(targetId);
-            var videoElement = videos[targetId];
-            setupTargetEvents(targetElement, videoElement);
-        });
-    </script>
-
+    <div id="video_title">
+        <h1>
+            Scan album cover to discover the album video
+        </h1>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 DevXR. All rights reserved.</p>
+    </footer>
 </body>
 </html>
