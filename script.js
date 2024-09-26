@@ -1,5 +1,14 @@
 const displayButton = (window.innerWidth / 2) - 50;
 
+const video_title = document.querySelector("#video_title")
+
+setTimeout(() => {
+    video_title.style.opacity = 0
+    setTimeout(() => {
+        video_title.style.display = "none"
+    }, 200);
+}, 1500);
+
 var currentVideo = null;
 var startButton = document.getElementById('startButton');
 startButton.style.left = displayButton + 'px';

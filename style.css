@@ -11,6 +11,15 @@
     transition: opacity .5s ease-out
 }
 
+/* Title */
+#video_title{
+    transition: opacity .5s ease-out; 
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0.3em;
+}
+
 /* Margin icon play video */
 .icon-tabler-player-play-filled{
     margin: 3px 10px 0 10px;
