@@ -1,9 +1,9 @@
 /* Main button play video */
 #startButton {
     position: absolute;
-    bottom: 20px;
+    bottom: 5vh;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(7%);
     z-index: 10;
     /* display: none; */
     opacity: 0;
@@ -14,13 +14,41 @@
 }
 
 /* Title */
-#video_title{
+#video_title {
+    opacity: 1;
     transition: opacity .5s ease-out; 
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-    margin: 0.3em;
+    text-align: center;
+    font-size: 4vh;
+    color: #ededed;
+    mix-blend-mode: overlay;
+
+    /* Flexbox for centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Full screen centering */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+
+    width: auto;  
+    height: auto;
+    z-index: 2;
+    background: transparent;
 }
+
+#video_title h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 6vh;
+    color: inherit;
+}
+
 
 /* Margin icon play video */
 .icon-tabler-player-play-filled{

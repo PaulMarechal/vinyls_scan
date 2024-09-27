@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fonction pour afficher le bouton et démarrer la vidéo
     function showButtonAndPlay(videoElement) {
+        if (video_title) {
+            video_title.style.opacity = 0;
+        }
         startButton.style.display = 'block';
         currentVideo = videoElement;
         setTimeout(() => {
@@ -52,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 videoElement.currentTime = 0;  // Remettre la vidéo au début
             }
             startButton.style.display = 'none'; // Cacher le bouton
+            if (video_title) {
+                video_title.style.opacity = 1;
+            }
         });
     }
 
@@ -77,11 +83,4 @@ document.addEventListener("DOMContentLoaded", () => {
         var videoElement = videos[targetId];
         setupTargetEvents(targetElement, videoElement);
     });
-
-    // Animation de titre
-    setTimeout(() => {
-        if (video_title) {
-            video_title.style.opacity = 0;
-        }
-    }, 1500);
 });
