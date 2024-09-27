@@ -40,6 +40,9 @@
     height: auto;
     z-index: 2;
     background: transparent;
+
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-text-stroke-width: 0.05px;
 }
 
 #video_title h1 {
@@ -47,6 +50,29 @@
     text-align: center;
     font-size: 6vh;
     color: inherit;
+}
+
+/* Header logo */
+header {
+    position: absolute;
+    top: 1.2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999; 
+}
+
+header a {
+    display: inline-block; 
+    z-index: 999; 
+    text-align: center;
+}
+
+header img {
+    max-width: 15vh; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
 }
 
 
