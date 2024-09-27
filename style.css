@@ -1,14 +1,16 @@
 /* Main button play video */
-#startButton{
-    position: absolute; 
-    bottom: 20px; 
-    z-index: 10; 
-    display: none; 
-    opacity: 0; 
-    background: red; 
-    border-radius: 20px; 
-    border: 2px solid #fff; 
-    transition: opacity .5s ease-out
+#startButton {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    /* display: none; */
+    opacity: 0;
+    background: red;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    transition: opacity .5s ease-out;
 }
 
 /* Title */
@@ -37,6 +39,7 @@ footer {
 }
   
 footer p {
+    font-family: "Bebas Neue", sans-serif;
     margin: 0; 
     font-size: 14px;
 }
